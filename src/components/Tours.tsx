@@ -390,8 +390,8 @@ const Tours: React.FC<ToursProps> = ({ isDarkMode }) => {
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className={`rounded-xl shadow-lg p-8 text-center border-2 ${
+        {/* Call to Action
+         <div className={`rounded-xl shadow-lg p-8 text-center border-2 ${
           isDarkMode 
             ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-yellow-400' 
             : 'bg-gradient-to-r from-red-50 to-red-100 border-red-600'
@@ -417,7 +417,7 @@ const Tours: React.FC<ToursProps> = ({ isDarkMode }) => {
           }`}>
             Get Started Today
           </button>
-        </div>
+        </div>  */}
       </div>
     </div>
   );

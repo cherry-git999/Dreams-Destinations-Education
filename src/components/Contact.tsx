@@ -36,11 +36,9 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData);
     setIsSubmitted(true);
     
-    // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
@@ -313,7 +311,11 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
               </div>
             </div>
 
-            {/* Map Section */}
+            {/* -------------------------------
+                 Find Us on the Map Section
+                 (Commented Out)
+            -------------------------------- */}
+            {/*
             <div className={`rounded-xl shadow-lg p-8 border-t-4 ${
               isDarkMode 
                 ? 'bg-gray-800 border-yellow-400' 
@@ -366,6 +368,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                 </p>
               </div>
             </div>
+            */}
           </div>
         </div>
 

@@ -19,7 +19,6 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
 
   const handleNavigation = (tab: string) => {
     onTabChange(tab);
-    // Scroll to top when switching pages
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -114,7 +113,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
                     isDarkMode ? 'text-yellow-400' : 'text-red-400'
                   }`}
                 />
-                <span className="text-gray-300 text-sm">+94741886686</span>
+                <span className="text-gray-300 text-sm">+94 74188 6686</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail
@@ -124,14 +123,19 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
                 />
                 <span className="text-gray-300 text-sm">info@ddeltd.com</span>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-start space-x-3">
                 <MapPin
-                  className={`w-4 h-4 ${
+                  className={`w-4 h-4 mt-1 ${
                     isDarkMode ? 'text-yellow-400' : 'text-red-400'
                   }`}
                 />
-                <span className="text-gray-300 text-sm">
-                  Western Province, Sri Lanka
+                <span className="text-gray-300 text-sm leading-relaxed">
+                  C / O Building Clinic Private Limited <br />
+                  Dreams Destinations and Education Private Limited <br />
+                  Level 35, West Tower, World Trade Center <br />
+                  Echelon Square, Colombo 01 <br />
+                  Colombo District, Western Province <br />
+                  Sri Lanka. 00100
                 </span>
               </div>
             </div>
