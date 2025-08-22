@@ -373,6 +373,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
         </div>
 
         {/* Additional Information */}
+        {/*
         <div className={`mt-12 rounded-xl shadow-lg p-8 text-center border-2 ${
           isDarkMode 
             ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-yellow-400' 
@@ -418,6 +419,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
             </a>
           </div>
         </div>
+        */}
       </div>
     </div>
   );
