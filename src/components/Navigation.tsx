@@ -56,11 +56,11 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange, isDarkM
                   Dreams Destinations & Education
                 </h1>
               </a>
-              <p className={`text-xs ${
+              {/* <p className={`text-xs ${
                 isDarkMode ? 'text-gray-300' : 'text-gray-600'
               }`}>
-                Private Limited
-              </p>
+               Private Limited
+              </p> */}
             </div>
 
             {/* Short Name (Mobile) */}
