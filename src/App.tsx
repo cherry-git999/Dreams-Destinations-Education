@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Navigation from './components/Navigation';
 import AboutUs from './components/AboutUs';
 import Tours from './components/Tours';
+import Education from './components/Education';
+import Recruitment from './components/Recruitment';
 import Contact from './components/Contact';
 import ComingSoon from './components/ComingSoon';
 import Footer from './components/Footer';
@@ -24,8 +26,6 @@ function App() {
 
   const tabTitles: { [key: string]: string } = {
     tours: 'Inbound and Outbound Tours',
-    education: 'Education',
-    recruitment: 'Recruitment',
     coaching: 'Coaching / Training & Development',
     management: 'The Management',
     contact: 'Contact Us'
@@ -36,6 +36,10 @@ function App() {
       return <AboutUs isDarkMode={isDarkMode} onNavigateToContact={() => setActiveTab('contact')} />;
     } else if (activeTab === 'tours') {
       return <Tours isDarkMode={isDarkMode} />;
+    } else if (activeTab === 'education') {
+      return <Education isDarkMode={isDarkMode} />;
+    } else if (activeTab === 'recruitment') {
+      return <Recruitment isDarkMode={isDarkMode} />;
     } else if (activeTab === 'contact') {
       return <Contact isDarkMode={isDarkMode} />;
     }
@@ -54,7 +58,7 @@ function App() {
       <main className="flex-grow">
         {renderContent()}
       </main>
-      <Footer isDarkMode={isDarkMode} onTabChange={setActiveTab} />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }

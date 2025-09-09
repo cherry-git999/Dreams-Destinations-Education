@@ -57,21 +57,21 @@ const AboutUs: React.FC<AboutUsProps> = ({ isDarkMode, onNavigateToContact }) =>
 
   // Education Partners
   const universities = [
-    {
-      name: 'Lincoln University College',
-      country: 'Malaysia',
-      logoHref: '/imgs/LU.png',
-    },
-    {
-      name: 'Asia e University',
-      country: 'Malaysia',
-      logoHref: '/imgs/AU.png',
-    },
-    {
-      name: 'City University',
-      country: 'Malaysia',
-      logoHref: '/imgs/CU.png',
-    },
+    // {
+    //   name: 'Lincoln University College',
+    //   country: 'Malaysia',
+    //   logoHref: '/imgs/LU.png',
+    // },
+    // {
+    //   name: 'Asia e University',
+    //   country: 'Malaysia',
+    //   logoHref: '/imgs/AU.png',
+    // },
+    // {
+    //   name: 'City University',
+    //   country: 'Malaysia',
+    //   logoHref: '/imgs/CU.png',
+    // },
     {
       name: 'Krupanidhi Group of Institutions',
       country: 'India',
