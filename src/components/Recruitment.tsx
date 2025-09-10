@@ -184,34 +184,43 @@ const Recruitment: React.FC<RecruitmentProps> = ({ isDarkMode }) => {
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Hero Section */}
-      <div className={`py-16 border-b-2 ${
-        isDarkMode 
-          ? 'bg-gradient-to-r from-black to-gray-900 border-yellow-400' 
-          : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
-      }`}>
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className={`inline-block p-6 mb-6 rounded-xl shadow-2xl border-2 ${
-            isDarkMode 
-              ? 'bg-gray-800 border-yellow-400' 
-              : 'bg-white border-white'
-          }`}>
-            <Users className={`w-16 h-16 mx-auto ${
-              isDarkMode ? 'text-yellow-400' : 'text-red-600'
-            }`} />
-          </div>
-          
-          <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${
-            isDarkMode ? 'text-white' : 'text-white'
-          }`}>
-            Recruitment Services
-          </h1>
-          <p className={`text-xl md:text-2xl font-medium italic ${
-            isDarkMode ? 'text-yellow-400' : 'text-yellow-300'
-          }`}>
-            Connecting Talent with Opportunity
-          </p>
-        </div>
-      </div>
+<div
+  className={`py-16 border-b-2 ${
+    isDarkMode
+      ? 'bg-gradient-to-r from-black to-gray-900 border-yellow-400'
+      : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
+  }`}
+  style={{
+    backgroundImage: 'url("imgs/KO.jpg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+>
+  <div className="max-w-6xl mx-auto px-4 text-center">
+    <div className={`inline-block p-6 mb-6 rounded-xl shadow-2xl border-2 ${
+      isDarkMode 
+        ? 'bg-gray-800 border-yellow-400' 
+        : 'bg-white border-white'
+    }`}>
+      <Users className={`w-16 h-16 mx-auto ${
+        isDarkMode ? 'text-yellow-400' : 'text-red-600'
+      }`} />
+    </div>
+    
+    <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${
+      isDarkMode ? 'text-white' : 'text-white'
+    }`}>
+      Recruitment Services
+    </h1>
+    <p className={`text-xl md:text-2xl font-medium italic ${
+      isDarkMode ? 'text-yellow-400' : 'text-yellow-300'
+    }`}>
+      Connecting Talent with Opportunity
+    </p>
+  </div>
+</div>
+
 
       <div className="max-w-6xl mx-auto px-4 py-12">
         {/* Client Acquisition and Management */}
@@ -350,7 +359,7 @@ const Recruitment: React.FC<RecruitmentProps> = ({ isDarkMode }) => {
               ? 'bg-gray-800 border-yellow-400' 
               : 'bg-white border-red-600'
           }`}>
-            <div className="flex items-center mb-6">
+            {/* <div className="flex items-center mb-6">
               <Award className={`w-8 h-8 ${
                 isDarkMode ? 'text-yellow-400' : 'text-red-600'
               }`} />
@@ -359,7 +368,7 @@ const Recruitment: React.FC<RecruitmentProps> = ({ isDarkMode }) => {
               }`}>
                 Our Competitive Advantages
               </h3>
-            </div>
+            </div> */}
             
             <div className="grid gap-6 md:grid-cols-3">
               {specializationServices.map((service, index) => (
@@ -409,7 +418,7 @@ const Recruitment: React.FC<RecruitmentProps> = ({ isDarkMode }) => {
               ? 'bg-gray-800 border-yellow-400' 
               : 'bg-white border-red-600'
           }`}>
-            <div className="flex items-center mb-6">
+            {/* <div className="flex items-center mb-6">
               <Building className={`w-8 h-8 ${
                 isDarkMode ? 'text-yellow-400' : 'text-red-600'
               }`} />
@@ -418,7 +427,7 @@ const Recruitment: React.FC<RecruitmentProps> = ({ isDarkMode }) => {
               }`}>
                 Extended Services and Programs
               </h3>
-            </div>
+            </div> */}
             
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {additionalServices.map((service, index) => (

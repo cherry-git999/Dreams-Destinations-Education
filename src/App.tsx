@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import AboutUs from './components/AboutUs';
 import Tours from './components/Tours';
 import Education from './components/Education';
+import CoachingTraining from './components/CoachingTraining';
 import Recruitment from './components/Recruitment';
 import Contact from './components/Contact';
 import ComingSoon from './components/ComingSoon';
@@ -38,6 +39,8 @@ function App() {
       return <Tours isDarkMode={isDarkMode} />;
     } else if (activeTab === 'education') {
       return <Education isDarkMode={isDarkMode} />;
+    } else if (activeTab === 'coaching') {
+      return <CoachingTraining isDarkMode={isDarkMode} />;
     } else if (activeTab === 'recruitment') {
       return <Recruitment isDarkMode={isDarkMode} />;
     } else if (activeTab === 'contact') {

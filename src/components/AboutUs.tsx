@@ -57,16 +57,16 @@ const AboutUs: React.FC<AboutUsProps> = ({ isDarkMode, onNavigateToContact }) =>
 
   // Education Partners
   const universities = [
-    // {
-    //   name: 'Lincoln University College',
-    //   country: 'Malaysia',
-    //   logoHref: '/imgs/LU.png',
-    // },
-    // {
-    //   name: 'Asia e University',
-    //   country: 'Malaysia',
-    //   logoHref: '/imgs/AU.png',
-    // },
+    {
+      name: 'Lincoln University College',
+      country: 'Malaysia',
+      logoHref: '/imgs/LU.png',
+    },
+    {
+      name: 'Asia e University',
+      country: 'Malaysia',
+      logoHref: '/imgs/AU.png',
+    },
     // {
     //   name: 'City University',
     //   country: 'Malaysia',
@@ -136,7 +136,13 @@ const AboutUs: React.FC<AboutUsProps> = ({ isDarkMode, onNavigateToContact }) =>
             ? 'bg-gradient-to-r from-black to-gray-900 border-yellow-400'
             : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
         }`}
-      >
+            style={{
+                  backgroundImage: 'url("/imgs/KO.jpg")',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                 }}
+         >
         <div className="max-w-6xl mx-auto px-4 text-center">
           {/* Company Logo */}
           <div

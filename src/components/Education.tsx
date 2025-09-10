@@ -31,13 +31,6 @@ const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
       description: 'Malaysia\'s premier digital university providing flexible and innovative learning solutions.'
     },
     {
-      name: 'City University',
-      country: 'Malaysia',
-      logoPath: '/imgs/CU.png',
-      websiteUrl: 'https://city.edu.my/',
-      description: 'A dynamic institution focused on providing practical and industry-relevant education.'
-    },
-    {
       name: 'Krupanidhi Group of Institutions',
       country: 'India',
       logoPath: '/imgs/KG.png',
@@ -56,18 +49,30 @@ const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Hero Section */}
-      <div className={`py-16 border-b-2 ${
-        isDarkMode 
-          ? 'bg-gradient-to-r from-black to-gray-900 border-yellow-400' 
-          : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
-      }`}>
+      <div
+        className={`py-16 border-b-2 ${
+          isDarkMode
+            ? 'bg-gradient-to-r from-black to-gray-900 border-yellow-400'
+            : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
+        }`}
+        style={{
+          backgroundImage: 'url("/imgs/EDU.jpg")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className={`inline-block p-6 mb-6 rounded-xl shadow-2xl border-2 bg-white border-white`}>
+          <div className={`inline-block p-6 mb-6 rounded-xl shadow-2xl border-2 ${
+            isDarkMode 
+              ? 'bg-gray-800 border-yellow-400' 
+              : 'bg-white  border-white'
+          }`}>
             <GraduationCap className={`w-16 h-16 mx-auto ${
               isDarkMode ? 'text-yellow-400' : 'text-red-600'
             }`} />
           </div>
-          
+
           <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${
             isDarkMode ? 'text-white' : 'text-white'
           }`}>
@@ -211,7 +216,8 @@ const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
                     </div>
                   </div>
                   
-                  {/* Visit Website Button */}
+                  {/*
+                  // Visit Website Button (Commented Out)
                   <div className="flex-shrink-0">
                     <a
                       href={university.websiteUrl}
@@ -227,9 +233,12 @@ const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
                       <ExternalLink className="w-4 h-4 ml-2" />
                     </a>
                   </div>
+                  */}
+
                 </div>
 
-                {/* Programmes Section */}
+                {/*
+                // Programmes Section (Commented Out)
                 <div className={`border-t pt-6 ${
                   isDarkMode ? 'border-gray-700' : 'border-gray-200'
                 }`}>
@@ -268,6 +277,8 @@ const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
                     </div>
                   </div>
                 </div>
+                */}
+
               </div>
             </div>
           ))}
