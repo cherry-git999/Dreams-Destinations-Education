@@ -1,25 +1,16 @@
 import React from 'react';
-import { Building2, Phone, Mail, MapPin } from 'lucide-react';
+import {Phone, Mail, MapPin } from 'lucide-react';
 
 interface FooterProps {
   isDarkMode: boolean;
-  onTabChange: (tab: string) => void;
+  onNavigate?: (tab: string) => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
-  const tabs = [
-    { id: 'about', label: 'About Us' },
-    { id: 'tours', label: 'Tours' },
-    { id: 'education', label: 'Education' },
-    { id: 'recruitment', label: 'Recruitment' },
-    { id: 'coaching', label: 'Coaching & Training' },
-    { id: 'management', label: 'Management' },
-    { id: 'contact', label: 'Contact' }
-  ];
-
+const Footer: React.FC<FooterProps> = ({ isDarkMode, onNavigate }) => {
   const handleNavigation = (tab: string) => {
-    onTabChange(tab);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (onNavigate) {
+      onNavigate(tab);
+    }
   };
 
   return (
@@ -33,42 +24,36 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div
-                className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                  isDarkMode ? 'bg-yellow-400' : 'bg-red-600'
-                }`}
-              >
-                <Building2
-                  className={`w-6 h-6 ${
-                    isDarkMode ? 'text-black' : 'text-white'
-                  }`}
-                />
-              </div>
-              <div>
-                <h3
-                  className={`text-xl font-bold ${
-                    isDarkMode ? 'text-yellow-400' : 'text-red-400'
-                  }`}
+              <div className="lg:col-span-2">
+               <div className="flex items-center space-x-3 mb-4">
+              <img
+                     src="/imgs/logoM.jpg" 
+                      alt="Company Logo"
+                        className="w-10 h-10 object-contain rounded-lg"
+                        />
+                         <div>
+                   <h3
+                          className={`text-xl font-bold ${
+                     isDarkMode ? 'text-yellow-400' : 'text-red-400'
+                      }`}
                 >
-                  Dreams Destinations & Education
+                    Dreams Destinations & Education
                 </h3>
-                <p className="text-sm text-gray-300">Private Limited</p>
-              </div>
-            </div>
-            <p className="text-gray-300 mb-4 leading-relaxed">
-              Providing exceptional Travel, Education, Training, and Recruitment
+                 <p className="text-sm text-gray-300">Private Limited</p>
+                  </div>
+             </div>
+             <p className="text-gray-300 mb-4 leading-relaxed">
+                Providing exceptional Travel, Education, Training, and Recruitment
               services that inspire individuals to Explore, Learn, and Grow.
             </p>
-            <p
+           <p
               className={`font-semibold italic ${
-                isDarkMode ? 'text-yellow-400' : 'text-red-400'
-              }`}
-            >
-              Global Opportunities & Endless Possibilities.
+               isDarkMode ? 'text-yellow-400' : 'text-red-400'
+             }`}
+          >
+              Global Opportunities… Endless Possibilities…!!!
             </p>
-          </div>
+      </div>
 
           {/* Quick Links */}
           <div>
@@ -80,20 +65,66 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
               Quick Links
             </h4>
             <ul className="space-y-2">
-              {tabs.map((tab) => (
-                <li key={tab.id}>
-                  <button
-                    onClick={() => handleNavigation(tab.id)}
-                    className={`transition-colors text-left hover:underline w-full ${
-                      isDarkMode
-                        ? 'text-gray-300 hover:text-yellow-400'
-                        : 'text-gray-300 hover:text-red-400'
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                </li>
-              ))}
+              <li>
+                <button
+                  onClick={() => handleNavigation('about')}
+                  className={`transition-colors text-left ${
+                    isDarkMode
+                      ? 'text-gray-300 hover:text-yellow-400'
+                      : 'text-gray-300 hover:text-red-400'
+                  }`}
+                >
+                  About Us
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNavigation('tours')}
+                  className={`transition-colors text-left ${
+                    isDarkMode
+                      ? 'text-gray-300 hover:text-yellow-400'
+                      : 'text-gray-300 hover:text-red-400'
+                  }`}
+                >
+                  Tours
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNavigation('education')}
+                  className={`transition-colors text-left ${
+                    isDarkMode
+                      ? 'text-gray-300 hover:text-yellow-400'
+                      : 'text-gray-300 hover:text-red-400'
+                  }`}
+                >
+                  Education
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNavigation('recruitment')}
+                  className={`transition-colors text-left ${
+                    isDarkMode
+                      ? 'text-gray-300 hover:text-yellow-400'
+                      : 'text-gray-300 hover:text-red-400'
+                  }`}
+                >
+                  Recruitment
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNavigation('coaching')}
+                  className={`transition-colors text-left ${
+                    isDarkMode
+                      ? 'text-gray-300 hover:text-yellow-400'
+                      : 'text-gray-300 hover:text-red-400'
+                  }`}
+                >
+                  Coaching & Training
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -113,7 +144,12 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
                     isDarkMode ? 'text-yellow-400' : 'text-red-400'
                   }`}
                 />
-                <span className="text-gray-300 text-sm">+94 74188 6686</span>
+                <a
+                  href="tel:+94741886686"
+                  className="text-gray-300 text-sm hover:underline"
+                >
+                  +94 74188 6686
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail
@@ -121,7 +157,12 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode, onTabChange }) => {
                     isDarkMode ? 'text-yellow-400' : 'text-red-400'
                   }`}
                 />
-                <span className="text-gray-300 text-sm">info@ddeltd.com</span>
+                <a
+                  href="mailto:info@ddeltd.com"
+                  className="text-gray-300 text-sm hover:underline"
+                >
+                  info@ddeltd.com
+                </a>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin

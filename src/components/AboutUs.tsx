@@ -137,7 +137,7 @@ const AboutUs: React.FC<AboutUsProps> = ({ isDarkMode, onNavigateToContact }) =>
             : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
         }`}
             style={{
-                  backgroundImage: 'url("/imgs/KO.jpg")',
+                  backgroundImage: 'url("/imgs/KOK.png")',
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundRepeat: 'no-repeat',

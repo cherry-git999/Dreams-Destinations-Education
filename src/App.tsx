@@ -61,7 +61,7 @@ function App() {
       <main className="flex-grow">
         {renderContent()}
       </main>
-      <Footer isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} onNavigate={setActiveTab} />
     </div>
   );
 }

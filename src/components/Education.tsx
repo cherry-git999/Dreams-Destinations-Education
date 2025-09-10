@@ -56,7 +56,7 @@ const Education: React.FC<EducationProps> = ({ isDarkMode }) => {
             : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
         }`}
         style={{
-          backgroundImage: 'url("/imgs/EDU.jpg")',
+          backgroundImage: 'url("/imgs/EDD.png")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

@@ -191,7 +191,7 @@ const Recruitment: React.FC<RecruitmentProps> = ({ isDarkMode }) => {
       : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
   }`}
   style={{
-    backgroundImage: 'url("imgs/KO.jpg")',
+    backgroundImage: 'url("imgs/REC.png")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -418,16 +418,6 @@ const Recruitment: React.FC<RecruitmentProps> = ({ isDarkMode }) => {
               ? 'bg-gray-800 border-yellow-400' 
               : 'bg-white border-red-600'
           }`}>
-            {/* <div className="flex items-center mb-6">
-              <Building className={`w-8 h-8 ${
-                isDarkMode ? 'text-yellow-400' : 'text-red-600'
-              }`} />
-              <h3 className={`text-2xl font-bold ml-4 ${
-                isDarkMode ? 'text-white' : 'text-gray-900'
-              }`}>
-                Extended Services and Programs
-              </h3>
-            </div> */}
             
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {additionalServices.map((service, index) => (

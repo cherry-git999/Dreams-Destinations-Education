@@ -24,9 +24,6 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submissions, setSubmissions] = useState<any[]>([]);
-  const [feedbackMsg, setFeedbackMsg] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -36,55 +33,20 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setFeedbackMsg(null);
+    console.log('Form submitted:', formData);
+    setIsSubmitted(true);
 
-    try {
-      const response = await fetch('http://localhost:5000/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+    setTimeout(() => {
+      setIsSubmitted(false);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
       });
-
-      let result: any;
-      try {
-        result = await response.json();
-      } catch {
-        throw new Error("Invalid JSON response from server");
-      }
-
-      if (result.success) {
-        setFeedbackMsg(result.message || "Form submitted successfully!");
-        setIsSubmitted(true);
-
-        // fetch latest submissions (like AdminDashboard)
-        try {
-          const subsResponse = await fetch('http://localhost:5000/api/submissions');
-          const subsResult = await subsResponse.json();
-          if (subsResult.success) {
-            setSubmissions(subsResult.submissions);
-          }
-        } catch (fetchErr) {
-          console.error("Failed to fetch submissions:", fetchErr);
-        }
-
-        // Reset form after successful submission
-        setTimeout(() => {
-          setIsSubmitted(false);
-          setFormData({ name: '', email: '', subject: '', message: '' });
-          setFeedbackMsg(null);
-        }, 5000);
-      } else {
-        setFeedbackMsg(result.message || "Something went wrong, but your data may have been saved.");
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setFeedbackMsg("Server error: Unable to submit form. Please try again later.");
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 3000);
   };
 
   const contactInfo = [
@@ -124,14 +86,14 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Hero Section */}
-<div
+      <div
   className={`py-16 border-b-2 ${
     isDarkMode
-      ? 'bg-gradient-to-r from-black to-gray-900 border-yellow-400'
-      : 'bg-gradient-to-r from-red-600 to-red-700 border-red-600'
+      ? 'border-yellow-400'
+      : 'border-red-600'
   }`}
   style={{
-    backgroundImage: 'url("/imgs/KO.jpg")',
+    backgroundImage: 'url("/imgs/CON1.png")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -148,7 +110,9 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
       }`} />
     </div>
     
-    <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+    <h1 className={`text-3xl md:text-4xl font-bold mb-4 ${
+      isDarkMode ? 'text-white' : 'text-white'
+    }`}>
       Contact Us
     </h1>
     <p className={`text-xl md:text-2xl font-medium italic ${
@@ -158,7 +122,6 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
     </p>
   </div>
 </div>
-
 
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid gap-12 lg:grid-cols-2">
@@ -184,19 +147,23 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                 isDarkMode 
                   ? 'border-yellow-400 bg-yellow-400 bg-opacity-10' 
                   : 'border-green-500 bg-green-50'
-              }`}> 
+              }`}>
                 <CheckCircle className={`w-16 h-16 mx-auto mb-4 ${
                   isDarkMode ? 'text-yellow-400' : 'text-green-500'
                 }`} />
                 <h3 className={`text-xl font-bold mb-2 ${
                   isDarkMode ? 'text-yellow-400' : 'text-green-600'
                 }`}>
-                  {feedbackMsg || "Message Sent Successfully!"}
+                  Message Sent Successfully!
                 </h3>
+                <p className={`${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>
+                  Thank you for contacting us. We'll get back to you soon.
+                </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name */}
                 <div>
                   <label className={`block text-sm font-medium mb-2 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
@@ -210,7 +177,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg border-2 ${
+                    className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white focus:border-yellow-400' 
                         : 'bg-white border-gray-300 text-gray-900 focus:border-red-600'
@@ -219,7 +186,6 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                   />
                 </div>
 
-                {/* Email */}
                 <div>
                   <label className={`block text-sm font-medium mb-2 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
@@ -233,7 +199,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg border-2 ${
+                    className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white focus:border-yellow-400' 
                         : 'bg-white border-gray-300 text-gray-900 focus:border-red-600'
@@ -242,7 +208,6 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                   />
                 </div>
 
-                {/* Subject */}
                 <div>
                   <label className={`block text-sm font-medium mb-2 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
@@ -256,7 +221,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className={`w-full px-4 py-3 rounded-lg border-2 ${
+                    className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white focus:border-yellow-400' 
                         : 'bg-white border-gray-300 text-gray-900 focus:border-red-600'
@@ -265,7 +230,6 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                   />
                 </div>
 
-                {/* Message */}
                 <div>
                   <label className={`block text-sm font-medium mb-2 ${
                     isDarkMode ? 'text-gray-300' : 'text-gray-700'
@@ -279,7 +243,7 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className={`w-full px-4 py-3 rounded-lg border-2 resize-vertical ${
+                    className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none resize-vertical ${
                       isDarkMode 
                         ? 'bg-gray-700 border-gray-600 text-white focus:border-yellow-400' 
                         : 'bg-white border-gray-300 text-gray-900 focus:border-red-600'
@@ -288,42 +252,23 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                   />
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-lg font-semibold text-lg flex items-center justify-center ${
+                  className={`w-full py-4 px-6 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center ${
                     isDarkMode 
-                      ? 'bg-yellow-400 text-black hover:bg-yellow-300 disabled:bg-gray-600' 
-                      : 'bg-red-600 text-white hover:bg-red-700 disabled:bg-gray-400'
+                      ? 'bg-yellow-400 text-black hover:bg-yellow-300 hover:shadow-lg' 
+                      : 'bg-red-600 text-white hover:bg-red-700 hover:shadow-lg'
                   }`}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-current mr-2"></div>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5 mr-2" />
-                      Send Message
-                    </>
-                  )}
+                  <Send className="w-5 h-5 mr-2" />
+                  Send Message
                 </button>
-
-                {/* Feedback message if submission fails but data saved */}
-                {feedbackMsg && !isSubmitted && (
-                  <p className={`mt-4 text-sm ${
-                    isDarkMode ? 'text-yellow-400' : 'text-red-600'
-                  }`}>
-                    {feedbackMsg}
-                  </p>
-                )}
               </form>
             )}
           </div>
 
-          {/* Contact Information */}
+          {
+
           <div className="space-y-8">
             <div className={`rounded-xl shadow-lg p-8 border-t-4 ${
               isDarkMode 
@@ -362,7 +307,9 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
                     </div>
                     <div className="ml-12">
                       {info.details.map((detail, detailIndex) => (
-                        <p key={detailIndex} className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'} text-sm`}>
+                        <p key={detailIndex} className={`text-sm ${
+                          isDarkMode ? 'text-gray-300' : 'text-gray-700'
+                        } ${detailIndex > 0 ? 'mt-1' : ''}`}>
                           {detail}
                         </p>
                       ))}
@@ -372,40 +319,55 @@ const Contact: React.FC<ContactProps> = ({ isDarkMode }) => {
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Submissions Preview */}
-        {submissions.length > 0 && (
-          <div className="mt-12">
-            <h3 className={`text-xl font-bold mb-4 ${isDarkMode ? 'text-yellow-400' : 'text-red-600'}`}>
-              Recent Submissions
+         /* // Commented Additional Information Section
+          <div className={`mt-12 rounded-xl shadow-lg p-8 text-center border-2 ${
+            isDarkMode 
+              ? 'bg-gradient-to-r from-gray-800 to-gray-700 border-yellow-400' 
+              : 'bg-gradient-to-r from-red-50 to-red-100 border-red-600'
+          }`}>
+            <MessageCircle className={`w-12 h-12 mx-auto mb-4 ${
+              isDarkMode ? 'text-yellow-400' : 'text-red-600'
+            }`} />
+            <h3 className={`text-2xl font-bold mb-4 ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              We're Here to Help
             </h3>
-            <div className="overflow-x-auto rounded-lg shadow-lg">
-              <table className="min-w-full border-collapse">
-                <thead>
-                  <tr className={`${isDarkMode ? 'bg-gray-700 text-yellow-400' : 'bg-red-600 text-white'}`}>
-                    <th className="px-4 py-2 text-left">Name</th>
-                    <th className="px-4 py-2 text-left">Email</th>
-                    <th className="px-4 py-2 text-left">Subject</th>
-                    <th className="px-4 py-2 text-left">Message</th>
-                    <th className="px-4 py-2 text-left">Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {submissions.map((s, idx) => (
-                    <tr key={idx} className={`${isDarkMode ? 'bg-gray-800 text-gray-200' : 'bg-white text-gray-800'} border-b`}>
-                      <td className="px-4 py-2">{s.name}</td>
-                      <td className="px-4 py-2">{s.email}</td>
-                      <td className="px-4 py-2">{s.subject}</td>
-                      <td className="px-4 py-2">{s.message}</td>
-                      <td className="px-4 py-2">{new Date(s.submission_date).toLocaleString()}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <p className={`text-lg mb-6 max-w-3xl mx-auto ${
+              isDarkMode ? 'text-gray-300' : 'text-gray-700'
+            }`}>
+              Whether you're planning your next adventure, seeking educational opportunities, 
+              or looking for career guidance, our expert team is ready to assist you. 
+              Contact us today and let's make your dreams a reality!
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="tel:+94741886686" 
+                className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'bg-yellow-400 text-black hover:bg-yellow-300' 
+                    : 'bg-red-600 text-white hover:bg-red-700'
+                }`}
+              >
+                <Phone className="w-5 h-5 inline mr-2" />
+                Call Now
+              </a>
+              <a 
+                href="mailto:info@ddeltd.com" 
+                className={`px-6 py-3 rounded-lg font-semibold border-2 transition-all duration-300 ${
+                  isDarkMode 
+                    ? 'border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black' 
+                    : 'border-red-600 text-red-600 hover:bg-red-600 hover:text-white'
+                }`}
+              >
+                <Mail className="w-5 h-5 inline mr-2" />
+                Email Us
+              </a>
             </div>
           </div>
-        )}
+          */}
+        </div>
       </div>
     </div>
   );

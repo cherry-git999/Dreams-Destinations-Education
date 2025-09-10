@@ -17,7 +17,6 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange, isDarkM
     { id: 'education', label: 'Education' },
     { id: 'recruitment', label: 'Recruitment' },
     { id: 'coaching', label: 'Coaching & Training' },
-    { id: 'management', label: 'Management' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -33,10 +32,9 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange, isDarkM
     }`}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          
+
           {/* Company Logo and Name */}
           <div className="flex items-center space-x-3">
-            
             <div className="w-10 h-10 rounded-lg overflow-hidden">
               <a href="/">
                 <img 
@@ -56,11 +54,6 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange, isDarkM
                   Dreams Destinations & Education
                 </h1>
               </a>
-              {/* <p className={`text-xs ${
-                isDarkMode ? 'text-gray-300' : 'text-gray-600'
-              }`}>
-               Private Limited
-              </p> */}
             </div>
 
             {/* Short Name (Mobile) */}
@@ -134,36 +127,52 @@ const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange, isDarkM
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
-          <div className={`lg:hidden border-t ${
-            isDarkMode ? 'border-gray-700' : 'border-gray-200'
-          }`}>
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => {
-                    onTabChange(tab.id);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={`block w-full text-left px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
-                    activeTab === tab.id
-                      ? isDarkMode
-                        ? 'text-black bg-yellow-400'
-                        : 'text-white bg-red-600'
-                      : isDarkMode
-                        ? 'text-gray-300 hover:text-yellow-400 hover:bg-gray-800'
-                        : 'text-gray-700 hover:text-red-600 hover:bg-gray-100'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
+      {/* Mobile Navigation Menu (Sliding from right) */}
+      <div
+        className={`fixed top-0 right-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg transform transition-transform duration-300 z-50 ${
+          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex justify-between items-center p-4 border-b">
+          <h2 className={`text-lg font-bold ${
+            isDarkMode ? 'text-yellow-400' : 'text-red-600'
+          }`}>Menu</h2>
+          <button
+            onClick={toggleMobileMenu}
+            className={`transition-colors ${
+              isDarkMode
+                ? 'text-yellow-400 hover:text-white'
+                : 'text-red-600 hover:text-black'
+            }`}
+          >
+            <X className="w-6 h-6" />
+          </button>
+        </div>
+
+        <div className="flex flex-col mt-4 space-y-3 px-4">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => {
+                onTabChange(tab.id);
+                setIsMobileMenuOpen(false);
+              }}
+              className={`text-left text-sm font-medium px-3 py-2 rounded-lg transition-all ${
+                activeTab === tab.id
+                  ? isDarkMode
+                    ? 'bg-yellow-400 text-black'
+                    : 'bg-red-600 text-white'
+                  : isDarkMode
+                    ? 'text-gray-300 hover:bg-gray-700 hover:text-yellow-400'
+                    : 'text-white hover:bg-red-100 hover:text-red-600'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
       </div>
     </nav>
   );
