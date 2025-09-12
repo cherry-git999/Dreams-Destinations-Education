@@ -28,16 +28,16 @@ const Tours: React.FC<ToursProps> = ({ isDarkMode }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const tourBrochures = [
-    { name: "Adventure Tour Package", url: "/pdfs/PSQT.pdf" },
-    { name: "Cultural Excursion Guide", url: "/pdfs/cultural-excursion-guide.pdf" },
-    { name: "Beach Paradise Getaway", url: "/pdfs/beach-paradise-getaway.pdf" },
-    { name: "Mountain Trekking Experience", url: "/pdfs/mountain-trekking-experience.pdf" },
-    { name: "Historical Sites Journey", url: "/pdfs/historical-sites-journey.pdf" },
-    { name: "Wildlife Safari Adventure", url: "/pdfs/wildlife-safari-adventure.pdf" },
-    { name: "City Exploration Package", url: "/pdfs/city-exploration-package.pdf" },
-    { name: "Luxury Resort Experience", url: "/pdfs/luxury-resort-experience.pdf" },
-    { name: "Family Fun Holiday", url: "/pdfs/family-fun-holiday.pdf" },
-    { name: "Romantic Honeymoon Package", url: "/pdfs/romantic-honeymoon-package.pdf" }
+    { name: "Welcome to Sri Lanka", url: "/pdfs/Package 01 Welcome to Sri Lanka.pdf" },
+    { name: "Adventurous Bliss", url: "/pdfs/Package 02 Adventurous Bliss.pdf" },
+    { name: "Adventurous Rail Bliss", url: "/pdfs/Package 03 Adventurous Rail Bliss.pdf" },
+    { name: "Road to Paradise", url: "/pdfs/Package 04 Road to Paradise.pdf" },
+    { name: "Bliss of Waves", url: "/pdfs/Package 05 Bliss of Waves.pdf" },
+    { name: "Adventures of Sri Lanka", url: "/pdfs/Package 06 Adventures of Sri Lanka.pdf" },
+    { name: "Legacy Sri Lanka", url: "/pdfs/Package 07 Legacy Sri Lanka.pdf" },
+    { name: "Ecstatic Sri Lanka", url: "/pdfs/Package 08 Ecstatic Sri Lanka.pdf" },
+    { name: "Historic Pearl of Asia", url: "/pdfs/Package 09 Historic Pearl of Asia.pdf" },
+    { name: "Sri Lanka Buddhist Pilgrimage", url: "/pdfs/Package 10 - Sri Lanka Buddhist Pilgrimage (5D4N).pdf" }
   ];
 
   const handleViewPDFs = () => {
