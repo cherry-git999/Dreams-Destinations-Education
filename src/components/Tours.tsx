@@ -44,7 +44,7 @@ const Tours: React.FC<ToursProps> = ({ isDarkMode }) => {
       title: 'Tour Packages',
       icon: <FileText className="w-8 h-8 text-yellow-400" />,
       items: [
-        'PDFs will be shared later',
+        'Check out our tour packages',
         'View and Download tour package PDFs'
       ],
       hasDownload: true
@@ -225,17 +225,22 @@ const Tours: React.FC<ToursProps> = ({ isDarkMode }) => {
                   ))}
                 </ul>
                 {service.hasDownload && (
-                  <div className="mt-6">
-                    <button className={`flex items-center justify-center w-full py-3 px-4 rounded-lg font-medium transition-all duration-300 border-2 border-dashed ${
-                      isDarkMode 
-                        ? 'border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black' 
-                        : 'border-red-600 text-red-600 hover:bg-red-600 hover:text-white'
-                    }`}>
-                      <Download className="w-5 h-5 mr-2" />
-                      View and Download PDFs
-                    </button>
-                  </div>
-                )}
+  <div className="mt-6">
+    <a 
+      href="/pdfs/PSQT.pdf" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className={`flex items-center justify-center w-full py-3 px-4 rounded-lg font-medium transition-all duration-300 border-2 border-dashed ${
+        isDarkMode 
+          ? 'border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black' 
+          : 'border-red-600 text-red-600 hover:bg-red-600 hover:text-white'
+      }`}
+    >
+      <Download className="w-5 h-5 mr-2" />
+      View and Download PDF
+    </a>
+  </div>
+)}
               </div>
             ))}
           </div>
