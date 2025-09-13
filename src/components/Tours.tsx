@@ -7,7 +7,7 @@ import {
   Car, 
   Building, 
   FileText, 
-  Download, 
+  List, 
   Phone, 
   Globe, 
   GraduationCap,
@@ -84,8 +84,8 @@ const Tours: React.FC<ToursProps> = ({ isDarkMode }) => {
       title: 'Tour Packages',
       icon: <FileText className="w-8 h-8 text-yellow-400" />,
       items: [
-        'PDFs will be shared later',
-        'View and Download tour package PDFs'
+        'Check out our exclusive tour packages',
+        'Discover detailed itineraries and offers'
       ],
       hasDownload: true
     }
@@ -293,8 +293,8 @@ const Tours: React.FC<ToursProps> = ({ isDarkMode }) => {
                           : 'border-red-600 text-red-600 hover:bg-red-600 hover:text-white'
                       }`}
                     >
-                      <Download className="w-5 h-5 mr-2" />
-                      View and Download PDFs
+                      <List className="w-5 h-5 mr-2" />
+                       Tour Package List
                     </button>
                   </div>
                 )}
